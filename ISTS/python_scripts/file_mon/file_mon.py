@@ -47,11 +47,11 @@ class Directory:
     size     : int
     perm     : int
     time_acc : int
-    time_mod : str
-    time_met : str
-    user     : str
-    group    : str
-    links    : str
+    time_mod : int
+    time_met : int
+    user     : int
+    group    : int
+    links    : int
 
 
 def make_file(path, name):
