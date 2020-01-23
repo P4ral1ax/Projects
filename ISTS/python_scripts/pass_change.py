@@ -3,6 +3,7 @@ import sys
 import subprocess
 import getpass
 
+GLOBAL_PASSWORD = ''
 
 
 def get_pass():
@@ -41,8 +42,8 @@ def pass_change(list, newpass):
 
 
 def autorun():
-    pass
-
+    names = make_set()
+    pass_change(names, GLOBAL_PASSWORD)
 
 
 def ui_mode():
