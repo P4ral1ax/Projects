@@ -2,10 +2,19 @@ import os
 import sys
 import subprocess
 import getpass
+"""
+This is a program designed to change the passwords of computers at the start of
+a competition. This program assumes that all passwords are the same for each
+user. Right now it only works with sudo privileges on only the host computer.
+"""
+
 
 GLOBAL_PASSWORD = 'thisisapassword69'
 
 def get_pass():
+    """
+    Takes user input and gets the password that the user desires
+    """
     newpass = getpass.getpass("Enter the new password to change to (0 to exit): ")
     if newpass == '0':
         sys.exit()
@@ -21,6 +30,9 @@ def get_pass():
 
 
 def make_set():
+    """
+    Makes file of all normal users on the system and then puts in in an array
+    """
     print("\n\nMaking file of usernames whose UID >= 1000....")
     os.system("awk -F: '$3 >= 1000 {print $1}' /etc/passwd > users.txt")
     file = open("users.txt")
@@ -34,6 +46,9 @@ def make_set():
 
 
 def pass_change(list, newpass):
+    """
+    Interates through each username and changes the passwords for each one
+    """
     print("Changing Passwords....\n")
     for name in list:
         os.system('echo "' + newpass + "\\n" + newpass + '\" | passwd ' + name + " 2> /dev/null")
