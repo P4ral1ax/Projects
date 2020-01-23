@@ -19,7 +19,7 @@ readarray userarray < "users.txt"
 # change each password
 for u in "${userarray[5]}" ; do
   u=${u%$'\n'}
-  echo "$u:$newpass | sudo chpasswd"
+  echo -e "$newpass"\n"$newpass" | passwd $u
 
   # echo "Password Changed for : $u"
 done
