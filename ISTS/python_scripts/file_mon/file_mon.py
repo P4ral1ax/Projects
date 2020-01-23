@@ -20,6 +20,7 @@ import time
 import sys
 import monitor_func
 import datastructure
+from datastructure import *
 
 
 """
@@ -28,7 +29,7 @@ As I'm doing this section I'm realizing how hard this will be
 
 def get_name(path):
     pass
-    return(name)
+    
 
 
 def make_file_array():
@@ -87,23 +88,22 @@ def custom_mode():
 
 
 def single_mode():
-    input = ("\n1. File\n2. Directory")
-    if input == '1':
+    type = input("\n1. File\n2. Directory\n: ")
+    if type == '1':
         filepath = input("What is the path to the file : ")
         object = make_file(filepath)
         monitor_main([object], [])
-
-    elif input == '2':
+    elif type == '2':
         directory = input("Directory Path : ")
         object = make_directory(directory)
         monitor_main([], [object])
     else:
-        print("Invalid input\n\n")
+        print("Invalid input\n")
 
 
 
 def main():
-    mode = input("---Modes---\n1. Quickrun\n2. Custom Mode\n3. Single Mode\n : ")
+    mode = input("---Modes---\n1. Quickrun\n2. Custom Mode\n3. Single Mode\n: ")
     if mode == '1':
         quickrun()
     elif mode == '2':

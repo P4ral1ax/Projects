@@ -1,8 +1,8 @@
 import os
 import time
 import sys
-import monitor_func
-import datastructure
+from monitor_func import *
+from datastructure import *
 
 """
 After the UI is collected and all the files are set to be monitored, this
