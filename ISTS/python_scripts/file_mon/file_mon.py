@@ -31,8 +31,6 @@ def get_name(path):
     return(name)
 
 
-
-
 def make_file_array():
     file_array = []
     file = open('files.txt')

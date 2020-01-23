@@ -9,6 +9,14 @@ is where the program will do the monitoring.
 """
 
 def monitor_main(files, directories):
-    if files != None:
+    if files != []:
         for file in files:
             print("Monitoring : " + file.path)
+    else:
+        print("No Files Detected....")
+
+    if directories != []:
+        for dir in directories:
+            print("Monitoring : " + dir.path)
+    else:
+        print("No Directories Detected....")
