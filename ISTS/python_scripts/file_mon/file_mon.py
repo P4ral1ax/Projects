@@ -25,33 +25,13 @@ from typing import List
 """
 As I'm doing this section I'm realizing how hard this will be
 """
-@dataclass
-class File:
-    __slots__ = ['name', 'path', 'size', 'perm', 'time_acc', 'time_mod', 'time_met', 'user', 'group', 'links']
-    name     : str
-    path     : str
-    size     : int
-    perm     : int
-    time_acc : int
-    time_mod : int
-    time_met : int
-    user     : int
-    group    : int
-    links    : int
 
-@dataclass
-class Directory:
-    __slots__ = ['name', 'path', 'size', 'perm', 'time_acc', 'time_mod', 'time_met', 'user', 'group', 'links', 'path']
-    name     : str
-    path     : str
-    size     : int
-    perm     : int
-    time_acc : int
-    time_mod : int
-    time_met : int
-    user     : int
-    group    : int
-    links    : int
+def make_file_array():
+    pass
+
+
+def make_directory_array():
+    pass
 
 
 def make_file(path, name):
@@ -80,10 +60,39 @@ def make_directory(directory):
     d_links    = d_info.st_nlink
     return(Directory(directory, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
 
+def quickrun():
+    pass
+
+
+def custom_mode():
+    pass
+
+
+def single_mode():
+    input = ("\n1. File\n2. Directory")
+    if input == '1':
+        filepath = input("Directory is the file in : ")
+        name = input("Name of the file : ")
+        make_file(filepath, name)
+    elif input == '2':
+        directory = input("Directory Path : ")
+        make_directory(directory)
+    else:
+        print("Invalid input\n\n")
 
 
 def main():
-    print(make_directory("/root"))
-
+    mode = input("---Modes---\n1. Quickrun\n2. Custom Mode\n3. Single Mode\n : ")
+    if mode == '1':
+        quickrun()
+    elif mode == '2':
+        custom_mode()
+    elif mode == '3':
+        single_mode()
+    elif mode == 'q' or mode == 'Q':
+        sys.exit()
+    else:
+        print("Invalid Input.")
+        main()
 
 main()

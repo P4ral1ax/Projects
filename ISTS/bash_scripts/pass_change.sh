@@ -4,9 +4,7 @@
 # Will list each account the password is changed to
 
 # Get the password to change to
-echo "enter the password to the accounts"
-read oldpass
-echo "Please enter the password to change to"
+echo "Please enter the password to change to: "
 read newpass
 
 #make file of each username
@@ -19,7 +17,7 @@ readarray userarray < "users.txt"
 # change each password
 for u in "${userarray[5]}" ; do
   u=${u%$'\n'}
-  echo -e "$newpass"\n"$newpass" | passwd $u
+  echo "$newpass"\n"$newpass" | passwd $u
 
   # echo "Password Changed for : $u"
 done
