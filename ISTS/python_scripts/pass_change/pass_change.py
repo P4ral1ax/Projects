@@ -8,7 +8,6 @@ a competition. This program assumes that all passwords are the same for each
 user. Right now it only works with sudo privileges on only the host computer.
 """
 
-
 GLOBAL_PASSWORD = 'thisisapassword69'
 
 def get_pass():

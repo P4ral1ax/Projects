@@ -1,6 +1,11 @@
+"""
+A small, simple backdoor that was my introduction to scripting. 
+"""
+
 import time
 import os
 import subprocess
+
 delay = 5
 limit = 0
 
