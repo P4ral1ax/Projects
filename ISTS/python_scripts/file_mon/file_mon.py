@@ -18,8 +18,7 @@ Hopeful Features:
 import os
 import time
 import sys
-import monitor_func
-import datastructure
+from monitor import *
 from datastructure import *
 
 
@@ -28,8 +27,10 @@ As I'm doing this section I'm realizing how hard this will be
 """
 
 def get_name(path):
-    pass
-    
+    name = path.split('/')[-1]
+    return(name)
+
+
 
 
 def make_file_array():
@@ -52,8 +53,7 @@ def make_directory_array():
 
 def make_file(path):
     f_name     = get_name(path)
-    f_path     = (path + '/' + f_name)
-    f_info     = os.stat(f_path)
+    f_info     = os.stat(path)
     f_perm     = oct(f_info.st_mode)
     f_size     = f_info.st_size
     f_time_acc = f_info.st_atime
@@ -62,10 +62,11 @@ def make_file(path):
     f_user     = f_info.st_uid
     f_group    = f_info.st_gid
     f_links    = f_info.st_nlink
-    return(File(name, f_path, f_size, f_perm, f_time_ac, f_time_mod, f_time_met, f_user, f_group, f_links))
+    return(File(f_name, path, f_size, f_perm, f_time_acc, f_time_mod, f_time_met, f_user, f_group, f_links))
 
 
 def make_directory(directory):
+    d_name     = get_name(directory)
     d_info     = os.stat(directory)
     d_perm     = oct(d_info.st_mode)
     d_size     = d_info.st_size
@@ -75,7 +76,7 @@ def make_directory(directory):
     d_user     = d_info.st_uid
     d_group    = d_info.st_gid
     d_links    = d_info.st_nlink
-    return(Directory(directory, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
+    return(Directory(d_name, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
 
 def quickrun():
     files = make_file_array()

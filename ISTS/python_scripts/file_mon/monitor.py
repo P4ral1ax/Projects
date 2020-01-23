@@ -1,7 +1,6 @@
 import os
 import time
 import sys
-from monitor_func import *
 from datastructure import *
 
 """
@@ -10,4 +9,6 @@ is where the program will do the monitoring.
 """
 
 def monitor_main(files, directories):
-    pass
+    if files != None:
+        for file in files:
+            print("Monitoring : " + file.path)
