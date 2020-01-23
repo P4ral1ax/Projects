@@ -3,8 +3,7 @@ import sys
 import subprocess
 import getpass
 
-GLOBAL_PASSWORD = ''
-
+GLOBAL_PASSWORD = 'thisisapassword69'
 
 def get_pass():
     newpass = getpass.getpass("Enter the new password to change to (0 to exit): ")
@@ -17,12 +16,12 @@ def get_pass():
         print("Passwords Matched...Changing All Users Passwords....")
         return(newpass)
     else:
-        print("\nPasswords did not match...Restarting :( \n")
+        print("\nPasswords did not match...Restarting\n")
         main()
 
 
 def make_set():
-    print("Making file of usernames whose UID >= 1000....")
+    print("\n\nMaking file of usernames whose UID >= 1000....")
     os.system("awk -F: '$3 >= 1000 {print $1}' /etc/passwd > users.txt")
     file = open("users.txt")
     print("Making username array....")
@@ -30,15 +29,16 @@ def make_set():
     for line in file:
         name = line.strip('\n')
         name_arr.append(name)
-    print("Done.")
+    print("Done with array....")
     return(name_arr)
 
 
 def pass_change(list, newpass):
-    print("Changing Passwords....")
+    print("Changing Passwords....\n")
     for name in list:
         os.system('echo "' + newpass + "\\n" + newpass + '\" | passwd ' + name + " 2> /dev/null")
-        print(name + " :  Password Changed")
+        print(name + " :  Password Changed.")
+    print("\nDone.")
 
 
 def autorun():
@@ -53,7 +53,7 @@ def ui_mode():
 
 
 def main():
-    mode = input(":Mode:\n1. Autorun\n2. User Input\n: ")
+    mode = input("---Mode---\n1. Autorun\n2. User Input\n\n-> ")
     if mode == '1':
         autorun()
     elif mode == '2':
