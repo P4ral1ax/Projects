@@ -18,24 +18,40 @@ Hopeful Features:
 import os
 import time
 import sys
-from dataclasses import dataclass
-from typing import Union
-from typing import List
+import monitor_func
+import datastructure
+
 
 """
 As I'm doing this section I'm realizing how hard this will be
 """
 
-def make_file_array():
+def get_name(path):
     pass
+    return(name)
+
+
+def make_file_array():
+    file_array = []
+    file = open('files.txt')
+    for line in file:
+        line = line.strip('\n')
+        file_array.append(make_file(line))
+    return(file_array)
 
 
 def make_directory_array():
-    pass
+    directory_array = []
+    file = open('directories.txt')
+    for line in file:
+        line = line.strip('\n')
+        directory_array.append(make_directory(line))
+    return(directory_array)
 
 
-def make_file(path, name):
-    f_path     = (path + '/' + name)
+def make_file(path):
+    f_name     = get_name(path)
+    f_path     = (path + '/' + f_name)
     f_info     = os.stat(f_path)
     f_perm     = oct(f_info.st_mode)
     f_size     = f_info.st_size
@@ -61,7 +77,9 @@ def make_directory(directory):
     return(Directory(directory, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
 
 def quickrun():
-    pass
+    files = make_file_array()
+    directories = make_directory_array()
+    monitor_main(files, directories)
 
 
 def custom_mode():
@@ -71,14 +89,17 @@ def custom_mode():
 def single_mode():
     input = ("\n1. File\n2. Directory")
     if input == '1':
-        filepath = input("Directory is the file in : ")
-        name = input("Name of the file : ")
-        make_file(filepath, name)
+        filepath = input("What is the path to the file : ")
+        object = make_file(filepath)
+        monitor_main([object], [])
+
     elif input == '2':
         directory = input("Directory Path : ")
-        make_directory(directory)
+        object = make_directory(directory)
+        monitor_main([], [object])
     else:
         print("Invalid input\n\n")
+
 
 
 def main():
