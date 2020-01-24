@@ -26,6 +26,26 @@ from datastructure import *
 As I'm doing this section I'm realizing how hard this will be
 """
 
+def get_option():
+    loop = True
+    while loop:
+        options = input("\n----Monitor Modes----\n1. Size Monitor\n2. Size and Time\n3. Permissions and Owner\n4. All Options\n: ")
+        if options == '1':
+            loop = False
+            return(1)
+        elif options == '2':
+            return(2)
+            loop = False
+        elif options == '3':
+            return(3)
+            loop = False
+        elif options == '4':
+            return(4)
+            loop = False
+        else:
+            print("Not a valid input...")
+
+
 def get_name(path):
     name = path.split('/')[-1]
     return(name)
@@ -76,28 +96,48 @@ def make_directory(directory):
     d_links    = d_info.st_nlink
     return(Directory(d_name, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
 
+
+
 def quickrun():
     files = make_file_array()
     directories = make_directory_array()
-    monitor_main(files, directories)
+    monitor_main(files, directories, 4)
 
 
 def custom_mode():
-    pass
+    type = input("\n1. File\n2. Directory\n3. Both\n: ")
+    if type == '1':
+        files = make_file_array()
+        options = get_option()
+        monitor_main(files, [], options)
+    elif type == '2':
+        directories = make_directory_array()
+        options = get_option()
+        monitor_main([], directories, options)
+    elif type == '3':
+        files = make_file_array()
+        directories = make_directory_array()
+        options = get_option()
+        monitor_main(files, directories, options)
+    else:
+        print("Not a valid input.")
 
 
 def single_mode():
     type = input("\n1. File\n2. Directory\n: ")
     if type == '1':
         filepath = input("What is the path to the file : ")
+        options = get_option()
         object = make_file(filepath)
-        monitor_main([object], [])
+        monitor_main([object], [], options)
     elif type == '2':
         directory = input("Directory Path : ")
+        options = get_option()
         object = make_directory(directory)
-        monitor_main([], [object])
+        monitor_main([], [object], options)
     else:
         print("Invalid input\n")
+
 
 
 

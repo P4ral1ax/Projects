@@ -8,7 +8,7 @@ After the UI is collected and all the files are set to be monitored, this
 is where the program will do the monitoring.
 """
 
-def monitor_main(files, directories):
+def monitor_main(files, directories, mode):
     if files != []:
         for file in files:
             print("Monitoring : " + file.path)
