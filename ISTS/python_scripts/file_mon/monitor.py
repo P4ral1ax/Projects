@@ -8,6 +8,7 @@ After the UI is collected and all the files are set to be monitored, this
 is where the program will do the monitoring.
 """
 
+
 def check_dir(dir):
     log = open('log.txt', 'a')
     info = os.stat(dir.path)
@@ -16,19 +17,8 @@ def check_dir(dir):
     else:
         print("NOT the same")
     log.close()
-    """
-    d_name     = get_name(directory)
-    d_info     = os.stat(directory)
-    d_perm     = oct(d_info.st_mode)
-    d_size     = d_info.st_size
-    d_time_acc = d_info.st_atime
-    d_time_mod = d_info.st_mtime
-    d_time_met = d_info.st_ctime
-    d_user     = d_info.st_uid
-    d_group    = d_info.st_gid
-    d_links    = d_info.st_nlink
-    """
-    pass
+
+
 
 def check_file(file):
     log = open('log.txt', 'a')
@@ -66,8 +56,6 @@ def check_file(file):
     elif info.st_nlink != file.links:
         print("Hard Links : " + file.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
         update_data(file)
-
-
 
     log.close()
 
