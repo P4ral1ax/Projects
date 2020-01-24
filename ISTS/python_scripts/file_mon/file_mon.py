@@ -53,7 +53,7 @@ def make_directory_array():
 def make_file(path):
     f_name     = get_name(path)
     f_info     = os.stat(path)
-    f_perm     = oct(f_info.st_mode)
+    f_perm     = f_info.st_mode
     f_size     = f_info.st_size
     f_time_acc = f_info.st_atime
     f_time_mod = f_info.st_mtime
@@ -67,7 +67,7 @@ def make_file(path):
 def make_directory(directory):
     d_name     = get_name(directory)
     d_info     = os.stat(directory)
-    d_perm     = oct(d_info.st_mode)
+    d_perm     = d_info.st_mode
     d_size     = d_info.st_size
     d_time_acc = d_info.st_atime
     d_time_mod = d_info.st_mtime
