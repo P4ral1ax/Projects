@@ -12,11 +12,25 @@ is where the program will do the monitoring.
 def check_dir(dir):
     log = open('log.txt', 'a')
     info = os.stat(dir.path)
-    if info.st_size == dir.size:
-        print("Size is the same")
-    else:
-        print("NOT the same")
+    print(info.st_size)
+
+    #Dir Permissions
+    if info.st_mode != dir.perm:
+        print("Permissions : " + dir.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
+        update_data(dir)
+    #Dir Access Time
+    elif info.st_atime != dir.time_acc:
+        print("Size : " + dir.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
+        update_data(dir)
+
     log.close()
+
+
+"""
+elif info.st_size != dir.size:
+    print("Size : " + dir.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
+    update_data(dir)
+"""
 
 
 
@@ -59,11 +73,6 @@ def check_file(file):
 
     log.close()
 
-"""
-if info.st_size != file.size:
-    print("Size : " + file.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
-    update_data(file)
-"""
 
 
 def update_data(file):
@@ -77,6 +86,7 @@ def monitor_main(files, directories):
         if files != []:
             for file in files:
                 check_file(file)
+
         if directories != []:
             for dir in directories:
                 check_dir(dir)
