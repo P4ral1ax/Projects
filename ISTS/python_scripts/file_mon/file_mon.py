@@ -2,17 +2,6 @@
 This program will monitor directories and files to see if they were edited
 or changed in any way. If there are any changes it alerts the user and
 logs the action.
-
-Hopeful Features:
- - Normal file updates
-    - File size, date made, deletion
-    - Permissions Changes
-    - If files opened
- - Directory monitoring
-    - Monitors each file In Directory
-    - Monitors any file deletions or creation
-    - Monitors Directory Permissions
-    - Directories inside of the root Directory
 """
 
 import os
@@ -20,17 +9,11 @@ import time
 import sys
 from monitor import *
 from datastructure import *
+from create_dataclass import *
 
 
-"""
-As I'm doing this section I'm realizing how hard this will be
-"""
-
-
-def get_name(path):
-    name = path.split('/')[-1]
-    return(name)
-
+def path_exists(path):
+    pass
 
 def make_file_array():
     file_array = []
@@ -48,35 +31,6 @@ def make_directory_array():
         line = line.strip('\n')
         directory_array.append(make_directory(line))
     return(directory_array)
-
-
-def make_file(path):
-    f_name     = get_name(path)
-    f_info     = os.stat(path)
-    f_perm     = f_info.st_mode
-    f_size     = f_info.st_size
-    f_time_acc = f_info.st_atime
-    f_time_mod = f_info.st_mtime
-    f_time_met = f_info.st_ctime
-    f_user     = f_info.st_uid
-    f_group    = f_info.st_gid
-    f_links    = f_info.st_nlink
-    return(File(f_name, path, f_size, f_perm, f_time_acc, f_time_mod, f_time_met, f_user, f_group, f_links))
-
-
-def make_directory(directory):
-    d_name     = get_name(directory)
-    d_info     = os.stat(directory)
-    d_perm     = d_info.st_mode
-    d_size     = d_info.st_size
-    d_time_acc = d_info.st_atime
-    d_time_mod = d_info.st_mtime
-    d_time_met = d_info.st_ctime
-    d_user     = d_info.st_uid
-    d_group    = d_info.st_gid
-    d_links    = d_info.st_nlink
-    return(Directory(d_name, directory, d_size, d_perm, d_time_acc, d_time_mod, d_time_met, d_user, d_group, d_links))
-
 
 
 def quickrun():

@@ -1,3 +1,8 @@
+"""
+The dataclass descriptioms for the program to reference. One description
+for a file and one for a directory
+"""
+
 from dataclasses import dataclass
 from typing import Union
 from typing import List
