@@ -25,7 +25,7 @@ def check_dir(files, directories, index):
         dir_changed = True
     #Dir UID Changed
     if info.st_uid != dir.user:
-        print("DID Changed : " + dir.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
+        print("UID Changed : " + dir.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
         dir_changed = True
     #Dir GID Changed
     if info.st_gid != dir.group:
@@ -51,7 +51,7 @@ def check_file(files, directories, index):
 
     #File Size
     if info.st_size != file.size:
-        print("Size : " + file.name + " | time : " + time.strftime('%H:%M:%S'), file=log, end='\n')
+        print("Size Changed : " + file.name + " | time : " + time.strftime('%H:%M:%S') + "\n    Old Size: " + str(file.size) + "B\n    New Size: " + str(info.st_size) + "B", file=log, end='\n')
         file_changed = True
     #File Permissions
     if info.st_mode != file.perm:

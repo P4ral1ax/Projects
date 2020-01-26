@@ -1,5 +1,0 @@
-Size : test00.txt | time : 11:31:48
-Size : test00.txt | time : 11:32:11
-Permissions : test00.txt | time : 11:32:33
-Permissions : test00.txt | time : 11:32:37
-Permissions : test00.txt | time : 11:32:43
