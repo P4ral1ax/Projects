@@ -7,20 +7,25 @@ logs the action.
 import os
 import time
 import sys
+from os import path
 from monitor import *
 from datastructure import *
 from create_dataclass import *
 
 
 def path_exists(path):
-    pass
+    return path.exists(path)
 
 def make_file_array():
     file_array = []
     file = open('files.txt')
     for line in file:
         line = line.strip('\n')
-        file_array.append(make_file(line))
+        if path.exists(line):
+            file_array.append(make_file(line))
+        else:
+            print("File \'" + line + "\' is not valid path")
+
     return(file_array)
 
 
@@ -29,7 +34,10 @@ def make_directory_array():
     file = open('directories.txt')
     for line in file:
         line = line.strip('\n')
-        directory_array.append(make_directory(line))
+        if path.exists(line):
+            directory_array.append(make_directory(line))
+        else:
+            print("Dir \'" + line + "\' is not valid path")
     return(directory_array)
 
 
