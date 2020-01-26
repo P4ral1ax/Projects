@@ -114,4 +114,4 @@ def monitor_main(files, directories):
         if directories != []:
             for index in range(0, len(directories)):
                 check_dir(files, directories, index)
-        time.sleep(1)
+        time.sleep(.3)

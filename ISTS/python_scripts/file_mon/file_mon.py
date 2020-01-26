@@ -67,15 +67,24 @@ def single_mode():
     type = input("\n1. File\n2. Directory\n: ")
     if type == '1':
         filepath = input("What is the path to the file : ")
-        object = make_file(filepath)
-        monitor_main([object], [])
+        if path.exists(filepath):
+            object = make_file(filepath)
+            monitor_main([object], [])
+        else:
+            print("\nFile \'" + filepath + "\' is not valid path")
+            single_mode()
+
     elif type == '2':
         directory = input("Directory Path : ")
-        object = make_directory(directory)
-        monitor_main([], [object])
+        if path.exists(directory):
+            object = make_directory(directory)
+            monitor_main([], [object])
+        else:
+            print("\nDir \'" + directory + "\' is not valid path")
+            single_mode()
     else:
         print("Invalid input\n")
-
+        single_mode()
 
 
 
