@@ -15,6 +15,6 @@ folder. The log file is where all logs will be placed. The program will run and 
 More detailed information will be placed in the log file. 
 
 ### Running Program
-'''
+```
 sudo python3 file_mon.py
-'''
+```
