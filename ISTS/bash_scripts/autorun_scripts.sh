@@ -4,7 +4,7 @@ echo 'Make sure program was run with SUDO privelages'
 echo 'Auto Running Script Package'
 
 echo 'Password Change Quickrun.....'
-$(sudo python3 ../pass_change/pass_change.py)
+$(sudo python3 ../pass_change/pass_change.py Thisisaplaceholder69)
 echo '1'
 
 echo 'Set Firewall....'
