@@ -9,7 +9,7 @@ user. Right now it only works with sudo privileges on only the host computer.
 """
 
 
-GLOBAL_PASSWORD = 'thisisapassword69'
+GLOBAL_PASSWORD = 'N3xtGenH@ck3r101!'
 
 def get_pass():
     """
@@ -56,10 +56,22 @@ def pass_change(list, newpass):
     print("\nDone.")
 
 
+"""
+different functions for each mode
+"""
+def command_line_run(passwd):
+    names = make_set()
+    pass_change(names, passwd)
+    os.system("history -c")
+
 def autorun():
     names = make_set()
     pass_change(names, GLOBAL_PASSWORD)
 
+def single_user():
+    password = get_pass()
+    names = make_set()
+    curr_passwd = get_currentpass()
 
 def ui_mode():
     password = get_pass()
@@ -67,15 +79,23 @@ def ui_mode():
     pass_change(names, password)
 
 
+
 def main():
-    mode = input("---Mode---\n1. Autorun\n2. User Input\n\n-> ")
-    if mode == '1':
-        autorun()
-    elif mode == '2':
-        ui_mode()
+    if len(sys.argv) == 2:
+        command_line_run(sys.argv[1])
     else:
-        print("Invalid input ")
-        main()
+        mode = input("---Mode---\n1. Autorun\n2. User Input (Global Password)\n\n-> ")
+        if mode == '1':
+            autorun()
+        elif mode == '2':
+            ui_mode()
+        elif mode == '3':
+            single_user()
+        else:
+            print("Invalid input ")
+            main()
+
+
 
 
 main()
